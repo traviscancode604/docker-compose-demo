@@ -1,0 +1,27 @@
+version: '3'
+services:
+  # my-app:
+  # image: ${docker-registry}/my-app:1.0
+  # ports:
+  # - 3000:3000
+  mongodb:
+    image: mongo:6.0.5
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${DEFAULT_ADMIN}
+      - MONGO_INITDB_ROOT_PASSWORD=${DEFAULT_PASSWORD}
+    volumes:
+      - mongo-data:/data/db
+  mongo-express:
+    image: mongo-express:1.0.0-alpha.4
+    restart: always 
+    ports:
+      - 8080:8081
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=${DEFAULT_ADMIN}
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=${DEFAULT_PASSWORD}
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+volumes:
+  mongo-data:
+    driver: local

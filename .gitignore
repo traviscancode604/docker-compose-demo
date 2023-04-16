@@ -1,0 +1,15 @@
+*DS_Store*
+config/default.json
+
+# Secrets
+####
+# Keeping for demonstration purposes.
+####
+# .env
+# .envrc
+# secrets/
+
+
+# Dependency directories
+node_modules/
+jspm_packages/
